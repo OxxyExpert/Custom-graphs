@@ -1,0 +1,147 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\C#\\Alghorithms\\GraphTests\\GraphTests.csproj": {}
+  },
+  "projects": {
+    "D:\\C#\\Alghorithms\\CustomGraphs\\CustomGraphs.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\C#\\Alghorithms\\CustomGraphs\\CustomGraphs.csproj",
+        "projectName": "CustomGraphs",
+        "projectPath": "D:\\C#\\Alghorithms\\CustomGraphs\\CustomGraphs.csproj",
+        "packagesPath": "C:\\Users\\Lenovo IdeaPad L340\\.nuget\\packages\\",
+        "outputPath": "D:\\C#\\Alghorithms\\CustomGraphs\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Lenovo IdeaPad L340\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\C#\\Alghorithms\\GraphDijkstra\\GraphDijkstra.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\C#\\Alghorithms\\GraphDijkstra\\GraphDijkstra.csproj",
+        "projectName": "GraphDijkstra",
+        "projectPath": "D:\\C#\\Alghorithms\\GraphDijkstra\\GraphDijkstra.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "D:\\C#\\Alghorithms\\GraphTests\\GraphTests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\C#\\Alghorithms\\GraphTests\\GraphTests.csproj",
+        "projectName": "GraphTests",
+        "projectPath": "D:\\C#\\Alghorithms\\GraphTests\\GraphTests.csproj",
+        "packagesPath": "C:\\Users\\Lenovo IdeaPad L340\\.nuget\\packages\\",
+        "outputPath": "D:\\C#\\Alghorithms\\GraphTests\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Lenovo IdeaPad L340\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "D:\\C#\\Alghorithms\\CustomGraphs\\CustomGraphs.csproj": {
+                "projectPath": "D:\\C#\\Alghorithms\\CustomGraphs\\CustomGraphs.csproj"
+              },
+              "D:\\C#\\Alghorithms\\GraphDijkstra\\GraphDijkstra.csproj": {
+                "projectPath": "D:\\C#\\Alghorithms\\GraphDijkstra\\GraphDijkstra.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.5.0, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.12.0, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[3.16.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

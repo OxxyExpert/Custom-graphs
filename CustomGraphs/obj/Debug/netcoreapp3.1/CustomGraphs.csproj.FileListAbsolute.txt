@@ -1,0 +1,9 @@
+D:\C#\Alghorithms\CustomGraphs\bin\Debug\netcoreapp3.1\CustomGraphs.deps.json
+D:\C#\Alghorithms\CustomGraphs\bin\Debug\netcoreapp3.1\CustomGraphs.dll
+D:\C#\Alghorithms\CustomGraphs\bin\Debug\netcoreapp3.1\CustomGraphs.pdb
+D:\C#\Alghorithms\CustomGraphs\obj\Debug\netcoreapp3.1\CustomGraphs.csprojAssemblyReference.cache
+D:\C#\Alghorithms\CustomGraphs\obj\Debug\netcoreapp3.1\CustomGraphs.AssemblyInfoInputs.cache
+D:\C#\Alghorithms\CustomGraphs\obj\Debug\netcoreapp3.1\CustomGraphs.AssemblyInfo.cs
+D:\C#\Alghorithms\CustomGraphs\obj\Debug\netcoreapp3.1\CustomGraphs.csproj.CoreCompileInputs.cache
+D:\C#\Alghorithms\CustomGraphs\obj\Debug\netcoreapp3.1\CustomGraphs.dll
+D:\C#\Alghorithms\CustomGraphs\obj\Debug\netcoreapp3.1\CustomGraphs.pdb
