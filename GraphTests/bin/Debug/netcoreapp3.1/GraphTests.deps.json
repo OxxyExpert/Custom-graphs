@@ -9,9 +9,8 @@
       "GraphTests/1.0.0": {
         "dependencies": {
           "CustomGraphs": "1.0.0",
-          "GraphDijkstra": "1.0.0",
           "Microsoft.NET.Test.Sdk": "16.5.0",
-          "NUnit": "3.12.0",
+          "NUnit": "3.13.2",
           "NUnit3TestAdapter": "3.16.1"
         },
         "runtime": {
@@ -382,14 +381,14 @@
           }
         }
       },
-      "NUnit/3.12.0": {
+      "NUnit/3.13.2": {
         "dependencies": {
           "NETStandard.Library": "2.0.0"
         },
         "runtime": {
           "lib/netstandard2.0/nunit.framework.dll": {
-            "assemblyVersion": "3.12.0.0",
-            "fileVersion": "3.12.0.0"
+            "assemblyVersion": "3.13.2.0",
+            "fileVersion": "3.13.2.0"
           }
         }
       },
@@ -871,19 +870,6 @@
         "runtime": {
           "CustomGraphs.dll": {}
         }
-      },
-      "GraphDijkstra/1.0.0": {
-        "runtime": {
-          "GraphDijkstra.exe": {}
-        }
-      },
-      "PriorityQueue/5.0.0.0": {
-        "runtime": {
-          "PriorityQueue.dll": {
-            "assemblyVersion": "5.0.0.0",
-            "fileVersion": "5.0.0.0"
-          }
-        }
       }
     }
   },
@@ -984,12 +970,12 @@
       "path": "nuget.frameworks/5.0.0",
       "hashPath": "nuget.frameworks.5.0.0.nupkg.sha512"
     },
-    "NUnit/3.12.0": {
+    "NUnit/3.13.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3oJTrcUcT9wmweBUwgUf0f1XIYy6RZq2ziV+RM95HMKAJGsHPN2i3MKK1dAPvDPMRLz799Llj4eyu/STB9Q7OA==",
-      "path": "nunit/3.12.0",
-      "hashPath": "nunit.3.12.0.nupkg.sha512"
+      "sha512": "sha512-u+fz/lXyR4vlamySNAEMrXvh+GhAQiB6/aVZtU5WjivR5zF26Ui0tfteDtWqT90k9D8y6g8rFKYQC97Z7d195w==",
+      "path": "nunit/3.13.2",
+      "hashPath": "nunit.3.13.2.nupkg.sha512"
     },
     "NUnit3TestAdapter/3.16.1": {
       "type": "package",
@@ -1336,16 +1322,6 @@
     },
     "CustomGraphs/1.0.0": {
       "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "GraphDijkstra/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "PriorityQueue/5.0.0.0": {
-      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

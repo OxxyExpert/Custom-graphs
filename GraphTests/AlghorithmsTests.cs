@@ -42,89 +42,15 @@ namespace GraphTests
         }
         
         [Test]
-        public void DijkstraAlghorithm()
-        {
-            var graphDijkstra = new UnweightedGraph<int>();
-            var nodesDijkstra = new List<UnweightedNode<int>>();
-
-            for (int i = 0; i < 4; ++i)
-                nodesDijkstra.Add(new UnweightedNode<int>(i));
-
-            nodesDijkstra[0].Connect(nodesDijkstra[1]);
-            nodesDijkstra[0].Connect(nodesDijkstra[2]);
-            nodesDijkstra[0].Connect(nodesDijkstra[3]);
-
-            nodesDijkstra[1].Connect(nodesDijkstra[3]);
-            nodesDijkstra[2].Connect(nodesDijkstra[3]);
-
-            for (int i = 0; i < 4; ++i)
-                graphDijkstra.AddNode(nodesDijkstra[i]);
-
-            var weighted = new Dictionary<UnweightedEdge<int>, double>();
-
-            weighted.Add(graphDijkstra[nodesDijkstra[0], nodesDijkstra[1]], 1);
-            weighted.Add(graphDijkstra[nodesDijkstra[0], nodesDijkstra[2]], 2);
-            weighted.Add(graphDijkstra[nodesDijkstra[0], nodesDijkstra[3]], 6);
-
-            weighted.Add(graphDijkstra[nodesDijkstra[2], nodesDijkstra[3]], 2);
-
-            weighted.Add(graphDijkstra[nodesDijkstra[1], nodesDijkstra[3]], 4);
-
-            var dijkstra = new AlghoritmsUnweitedGraph<int>();
-
-            var actual = dijkstra.Dijkstra(graphDijkstra, weighted, nodesDijkstra[0], nodesDijkstra[3]).ToList();
-
-            int[] expected = { 0, 2, 3 };
-
-            CollectionAssert.AreEqual(expected, actual.Select(v => v.Value));
-        }
-        [Test]
-        public void DijkstraAlghorithm_NoPath_Null()
-        {
-            var graphDijkstra = new UnweightedGraph<int>();
-            var nodesDijkstra = new List<UnweightedNode<int>>();
-
-            for (int i = 0; i < 5; ++i)
-                nodesDijkstra.Add(new UnweightedNode<int>(i));
-
-            nodesDijkstra[0].Connect(nodesDijkstra[1]);
-            nodesDijkstra[0].Connect(nodesDijkstra[2]);
-            nodesDijkstra[0].Connect(nodesDijkstra[3]);
-
-            nodesDijkstra[1].Connect(nodesDijkstra[3]);
-            nodesDijkstra[2].Connect(nodesDijkstra[3]);
-
-            for (int i = 0; i < 5; ++i)
-                graphDijkstra.AddNode(nodesDijkstra[i]);
-
-            var weighted = new Dictionary<UnweightedEdge<int>, double>();
-
-            weighted.Add(graphDijkstra[nodesDijkstra[0], nodesDijkstra[1]], 1);
-            weighted.Add(graphDijkstra[nodesDijkstra[0], nodesDijkstra[2]], 2);
-            weighted.Add(graphDijkstra[nodesDijkstra[0], nodesDijkstra[3]], 6);
-
-            weighted.Add(graphDijkstra[nodesDijkstra[2], nodesDijkstra[3]], 2);
-
-            weighted.Add(graphDijkstra[nodesDijkstra[1], nodesDijkstra[3]], 4);
-
-            var dijkstra = new AlghoritmsUnweitedGraph<int>();
-
-            var actual = dijkstra.Dijkstra(graphDijkstra, weighted, nodesDijkstra[0], nodesDijkstra[4]);
-
-            IEnumerable<UnweightedNode<int>> expected = null;
-
-            CollectionAssert.AreEqual(expected, actual);
-        }
-        [Test]
         public void BreadFirstSearchTest()
         {
             var alghorithm = new AlghoritmsUnweitedGraph<int>();
 
-            var actual = alghorithm.BreadFirstSearch(graph, nodes[0]);
+            var actual = alghorithm.BreadFirstSearch(graph, nodes[0]).ToArray();
 
             int[] expected = {0, 1, 2, 3, 6, 4, 5, 7 };
 
-            CollectionAssert.AreEqual(expected, actual.Select(x => x.Value).ToArray());
+            CollectionAssert.AreEqual(expected, actual.Select(x => x.Value));
         }
         [Test]
         public void DepthFirstSearchTest()

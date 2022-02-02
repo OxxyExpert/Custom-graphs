@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "b+nYXmVwva95HZsWeRuZDcS2aaixz3q3hxgL/J/yTO+Jt0F4URxvJ2+6hC/WpfvtZ+jM01qBk+PBIISTpO92ZA==",
+  "dgSpecHash": "RzIsLi2VDTXKwHb+15BH/ccCkG5EdkrPfP7pB3JU1llV/DJ3U4QRULfR70ksaC7xOnorqZoEKxtTezlWuXzFJw==",
   "success": true,
   "projectFilePath": "D:\\C#\\Alghorithms\\GraphTests\\GraphTests.csproj",
   "expectedPackageFiles": [
@@ -17,7 +17,7 @@
     "C:\\Users\\Lenovo IdeaPad L340\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
     "C:\\Users\\Lenovo IdeaPad L340\\.nuget\\packages\\newtonsoft.json\\9.0.1\\newtonsoft.json.9.0.1.nupkg.sha512",
     "C:\\Users\\Lenovo IdeaPad L340\\.nuget\\packages\\nuget.frameworks\\5.0.0\\nuget.frameworks.5.0.0.nupkg.sha512",
-    "C:\\Users\\Lenovo IdeaPad L340\\.nuget\\packages\\nunit\\3.12.0\\nunit.3.12.0.nupkg.sha512",
+    "C:\\Users\\Lenovo IdeaPad L340\\.nuget\\packages\\nunit\\3.13.2\\nunit.3.13.2.nupkg.sha512",
     "C:\\Users\\Lenovo IdeaPad L340\\.nuget\\packages\\nunit3testadapter\\3.16.1\\nunit3testadapter.3.16.1.nupkg.sha512",
     "C:\\Users\\Lenovo IdeaPad L340\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\Lenovo IdeaPad L340\\.nuget\\packages\\system.appcontext\\4.1.0\\system.appcontext.4.1.0.nupkg.sha512",

@@ -16,60 +16,6 @@ namespace CustomGraphs
 
         public class AlghoritmsUnweitedGraph<T>
         {
-            #region Dijkstra
-            public IEnumerable<UnweightedNode<T>> Dijkstra(UnweightedGraph<T> graph, Dictionary<UnweightedEdge<T>, double> weights, UnweightedNode<T> startNode, UnweightedNode<T> target)
-            {
-                var notVisited = graph.ToList();
-                var track = new Dictionary<UnweightedNode<T>, DijkstraData<T>>();
-                track.Add(startNode, new DijkstraData<T> { previous = null, price = 0 });
-
-                while (true)
-                {
-                    UnweightedNode<T> toOpen = null;
-                    double bestPrice = double.PositiveInfinity;
-
-                    foreach (var node in notVisited)
-                    {
-                        if (track.ContainsKey(node) == true && track[node].price < bestPrice)
-                        {
-                            toOpen = node;
-                            bestPrice = track[node].price;
-                        }
-                    }
-
-                    if (toOpen == null)
-                        return null;
-                    if (toOpen == target)
-                        break;
-
-                    foreach (var edge in toOpen.IncidentEdges().Where(e => e.From == toOpen))
-                    {
-                        if (weights.ContainsKey(edge) == false)
-                            continue;
-
-                        double currentPrice = track[toOpen].price + weights[edge];
-
-                        UnweightedNode<T> nextNode = edge.GetOtherNode(toOpen);
-
-                        if (track.ContainsKey(nextNode) == false || track[nextNode].price > currentPrice)
-                            track[nextNode] = new DijkstraData<T> { price = currentPrice, previous = toOpen };
-                    }
-
-                    notVisited.Remove(toOpen);
-                }
-
-                var result = new List<UnweightedNode<T>>();
-
-                while (target != null)
-                {
-                    result.Add(target);
-                    target = track[target].previous;
-                }
-                result.Reverse();
-
-                return result;
-            }
-            #endregion
             public IEnumerable<UnweightedNode<T>> FindShortestPath(UnweightedGraph<T> graph, UnweightedNode<T> startNode, UnweightedNode<T> target)
             {
                 var track = new Dictionary<UnweightedNode<T>, UnweightedNode<T>>(graph.Count);

@@ -58,16 +58,6 @@
         }
       }
     },
-    "D:\\C#\\Alghorithms\\GraphDijkstra\\GraphDijkstra.csproj": {
-      "restore": {
-        "projectUniqueName": "D:\\C#\\Alghorithms\\GraphDijkstra\\GraphDijkstra.csproj",
-        "projectName": "GraphDijkstra",
-        "projectPath": "D:\\C#\\Alghorithms\\GraphDijkstra\\GraphDijkstra.csproj"
-      },
-      "frameworks": {
-        "net472": {}
-      }
-    },
     "D:\\C#\\Alghorithms\\GraphTests\\GraphTests.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -94,9 +84,6 @@
             "projectReferences": {
               "D:\\C#\\Alghorithms\\CustomGraphs\\CustomGraphs.csproj": {
                 "projectPath": "D:\\C#\\Alghorithms\\CustomGraphs\\CustomGraphs.csproj"
-              },
-              "D:\\C#\\Alghorithms\\GraphDijkstra\\GraphDijkstra.csproj": {
-                "projectPath": "D:\\C#\\Alghorithms\\GraphDijkstra\\GraphDijkstra.csproj"
               }
             }
           }
@@ -117,7 +104,7 @@
             },
             "NUnit": {
               "target": "Package",
-              "version": "[3.12.0, )"
+              "version": "[3.13.2, )"
             },
             "NUnit3TestAdapter": {
               "target": "Package",
