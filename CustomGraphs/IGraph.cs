@@ -5,12 +5,12 @@ using CustomGraphs.Components;
 
 namespace CustomGraphs
 {
-    public interface IWeightedGraph<T>
+    public interface IGraph<T>
     {
         public int Count { get; }
 
-        public void AddNode(WeightedNode<T> node);
+        public void AddNode(Node<T> node);
         public IEnumerable<WeightedEdge<T>> GetEdges();
-        public IEnumerable<WeightedNode<T>> GetNodes();
+        public IEnumerable<Node<T>> GetNodes();
     }
 }

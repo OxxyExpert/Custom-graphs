@@ -8,12 +8,12 @@ namespace CustomGraphs
     {
         public interface IWeightedEdge<T>
         {
-            public WeightedNode<T> From { get; }
-            public WeightedNode<T> To { get; }
+            public Node<T> From { get; }
+            public Node<T> To { get; }
             public double Weight { get; }
 
-            public bool IsIncident(WeightedNode<T> node);
-            public WeightedNode<T> GetOtherNode(WeightedNode<T> currentNode);
+            public bool IsIncident(Node<T> node);
+            public Node<T> GetOtherNode(Node<T> currentNode);
         }
     }
 }

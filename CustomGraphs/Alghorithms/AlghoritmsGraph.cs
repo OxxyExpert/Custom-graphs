@@ -5,22 +5,22 @@ using System.Linq;
 
 namespace CustomGraphs.Alghorithms
 {
-    internal class DijkstraDataWeighted<T>
+    internal class DijkstraData<T>
     {
         public double price;
-        public WeightedNode<T> previous;
+        public Node<T> previous;
     }
-    public class AlghoritmsWeitedGraph<T>
+    public class AlghoritmsGraph<T>
     {
-        public IEnumerable<WeightedNode<T>> Dijkstra(WeightedGraph<T> graph, WeightedNode<T> startNode, WeightedNode<T> target)
+        public IEnumerable<Node<T>> Dijkstra(BidirectionalGraph<T> graph, Node<T> startNode, Node<T> target)
         {
             var notVisited = graph.ToList();
-            var track = new Dictionary<WeightedNode<T>, DijkstraDataWeighted<T>>();
-            track.Add(startNode, new DijkstraDataWeighted<T> { previous = null, price = 0 });
+            var track = new Dictionary<Node<T>, DijkstraData<T>>();
+            track.Add(startNode, new DijkstraData<T> { previous = null, price = 0 });
 
             while (true)
             {
-                WeightedNode<T> toOpen = null;
+                Node<T> toOpen = null;
                 double bestPrice = double.PositiveInfinity;
 
                 foreach (var node in notVisited)
@@ -41,16 +41,16 @@ namespace CustomGraphs.Alghorithms
                 {
                     double currentPrice = track[toOpen].price + edge.Weight;
 
-                    WeightedNode<T> nextNode = edge.GetOtherNode(toOpen);
+                    Node<T> nextNode = edge.GetOtherNode(toOpen);
 
                     if (track.ContainsKey(nextNode) == false || track[nextNode].price > currentPrice)
-                        track[nextNode] = new DijkstraDataWeighted<T> { price = currentPrice, previous = toOpen };
+                        track[nextNode] = new DijkstraData<T> { price = currentPrice, previous = toOpen };
                 }
 
                 notVisited.Remove(toOpen);
             }
 
-            var result = new List<WeightedNode<T>>();
+            var result = new List<Node<T>>();
 
             while (target != null)
             {
@@ -61,18 +61,18 @@ namespace CustomGraphs.Alghorithms
 
             return result;
         }
-        public IEnumerable<WeightedNode<T>> FindShortestPath(WeightedGraph<T> graph, WeightedNode<T> startNode, WeightedNode<T> target)
+        public IEnumerable<Node<T>> FindShortestPath(BidirectionalGraph<T> graph, Node<T> startNode, Node<T> target)
         {
-            var track = new Dictionary<WeightedNode<T>, WeightedNode<T>>(graph.Count);
+            var track = new Dictionary<Node<T>, Node<T>>(graph.Count);
             track.Add(startNode, null);
 
-            var queue = new Queue<WeightedNode<T>>();
+            var queue = new Queue<Node<T>>();
             queue.Enqueue(startNode);
 
 
             while (queue.Count != 0)
             {
-                WeightedNode<T> currentNode = queue.Dequeue();
+                Node<T> currentNode = queue.Dequeue();
 
                 bool endIsFound = false;
                 foreach (var nextNode in currentNode.IncidentNodes())
@@ -94,7 +94,7 @@ namespace CustomGraphs.Alghorithms
             if (track.ContainsKey(target) == false)
                 return null;
 
-            var list = new List<WeightedNode<T>>();
+            var list = new List<Node<T>>();
 
             while (target != null)
             {
@@ -105,9 +105,9 @@ namespace CustomGraphs.Alghorithms
             list.Reverse();
             return list;
         }
-        public IEnumerable<IEnumerable<WeightedNode<T>>> FindConnectedComponents(WeightedGraph<T> graph)
+        public IEnumerable<IEnumerable<Node<T>>> FindConnectedComponents(BidirectionalGraph<T> graph)
         {
-            var visited = new HashSet<WeightedNode<T>>(graph.Count);
+            var visited = new HashSet<Node<T>>(graph.Count);
 
             while (true)
             {
@@ -126,17 +126,17 @@ namespace CustomGraphs.Alghorithms
                 yield return breadthSearch;
             }
         }
-        public IEnumerable<WeightedNode<T>> BreadFirstSearch(WeightedGraph<T> graph, WeightedNode<T> startNode)
+        public IEnumerable<Node<T>> BreadFirstSearch(BidirectionalGraph<T> graph, Node<T> startNode)
         {
-            var queue = new Queue<WeightedNode<T>>();
+            var queue = new Queue<Node<T>>();
             queue.Enqueue(startNode);
 
-            var visited = new HashSet<WeightedNode<T>>(graph.Count);
+            var visited = new HashSet<Node<T>>(graph.Count);
             visited.Add(startNode);
 
             while (queue.Count != 0)
             {
-                WeightedNode<T> currentNode = queue.Dequeue();
+                Node<T> currentNode = queue.Dequeue();
 
                 yield return currentNode;
 
@@ -150,16 +150,16 @@ namespace CustomGraphs.Alghorithms
                 }
             }
         }
-        public IEnumerable<WeightedNode<T>> DepthFirstSearch(WeightedGraph<T> graph, WeightedNode<T> startNode)
+        public IEnumerable<Node<T>> DepthFirstSearch(BidirectionalGraph<T> graph, Node<T> startNode)
         {
-            var stack = new Stack<WeightedNode<T>>();
+            var stack = new Stack<Node<T>>();
             stack.Push(startNode);
 
-            var visited = new HashSet<WeightedNode<T>>(graph.Count);
+            var visited = new HashSet<Node<T>>(graph.Count);
 
             while (stack.Count != 0)
             {
-                WeightedNode<T> currentNode = stack.Pop();
+                Node<T> currentNode = stack.Pop();
 
                 if (visited.Contains(currentNode) == true)
                     continue;

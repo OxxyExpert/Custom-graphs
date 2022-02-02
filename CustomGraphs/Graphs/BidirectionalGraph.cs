@@ -2,23 +2,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using CustomGraphs.Components;
+using CustomGraphs;
 
 namespace CustomGraphs
 {
-    public class UnweightedGraph<T> : IUnweightedGraph<T>, IEnumerable<UnweightedNode<T>>
+    public class BidirectionalGraph<T> : IEnumerable<Node<T>>, IGraph<T>
     {
-        private List<UnweightedNode<T>> _nodes;
+        private List<Node<T>> _nodes;
         public int Count
         {
             get => _nodes.Count;
         }
 
-        public UnweightedGraph()
+        public BidirectionalGraph()
         {
-            _nodes = new List<UnweightedNode<T>>();
+            _nodes = new List<Node<T>>();
         }
 
-        public void AddNode(UnweightedNode<T> node)
+        public void AddNode(Node<T> node)
         {
             if (node == null)
                 throw new ArgumentException("Node can not be null");
@@ -26,7 +27,7 @@ namespace CustomGraphs
             _nodes.Add(node);
         }
 
-        public UnweightedEdge<T> this[UnweightedNode<T> first, UnweightedNode<T> second]
+        public WeightedEdge<T> this[Node<T> first, Node<T> second]
         {
             get
             {
@@ -43,7 +44,7 @@ namespace CustomGraphs
             }
         }
 
-        public IEnumerable<UnweightedEdge<T>> GetEdges()
+        public IEnumerable<WeightedEdge<T>> GetEdges()
         {
             foreach (var node in _nodes)
             {
@@ -53,7 +54,7 @@ namespace CustomGraphs
                 }
             }
         }
-        public IEnumerable<UnweightedNode<T>> GetNodes()
+        public IEnumerable<Node<T>> GetNodes()
         {
             foreach (var node in _nodes)
             {
@@ -61,7 +62,7 @@ namespace CustomGraphs
             }
         }
 
-        public IEnumerator<UnweightedNode<T>> GetEnumerator()
+        public IEnumerator<Node<T>> GetEnumerator()
         {
             return _nodes.GetEnumerator();
         }

@@ -5,7 +5,7 @@ using CustomGraphs.Components.Interfaces;
 
 namespace CustomGraphs.Components
 {
-    public class WeightedNode<T> : IWeightedNode<T>
+    public class Node<T> : INode<T>
     {
         private List<WeightedEdge<T>> _edges;
         private readonly T _value;
@@ -15,13 +15,13 @@ namespace CustomGraphs.Components
             get => _value;
         }
 
-        public WeightedNode(T value)
+        public Node(T value)
         {
             _edges = new List<WeightedEdge<T>>();
             _value = value;
         }
 
-        public void Connect(WeightedNode<T> anotherNode, double weight)
+        public void Connect(Node<T> anotherNode, double weight = 0)
         {
             anotherNode._edges.Add(new WeightedEdge<T>(anotherNode, this, weight));
             _edges.Add(new WeightedEdge<T>(this, anotherNode, weight));
@@ -37,7 +37,7 @@ namespace CustomGraphs.Components
             return _value.ToString();
         }
 
-        public IEnumerable<WeightedNode<T>> IncidentNodes()
+        public IEnumerable<Node<T>> IncidentNodes()
         {
             foreach (var edge in _edges)
             {

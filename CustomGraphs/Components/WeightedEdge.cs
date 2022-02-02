@@ -6,22 +6,22 @@ namespace CustomGraphs.Components
 {
     public class WeightedEdge<T> : IWeightedEdge<T>
     {
-        public WeightedNode<T> From { get; }
-        public WeightedNode<T> To { get; }
+        public Node<T> From { get; }
+        public Node<T> To { get; }
         public double Weight { get; private set; }
 
-        public WeightedEdge(WeightedNode<T> from, WeightedNode<T> to, double weight = 1)
+        public WeightedEdge(Node<T> from, Node<T> to, double weight = 1)
         {
             From = from;
             To = to;
             Weight = weight;
         }
 
-        public bool IsIncident(WeightedNode<T> node)
+        public bool IsIncident(Node<T> node)
         {
             return node == From || node == To;
         }
-        public WeightedNode<T> GetOtherNode(WeightedNode<T> currentNode)
+        public Node<T> GetOtherNode(Node<T> currentNode)
         {
             if (currentNode == From)
                 return To;

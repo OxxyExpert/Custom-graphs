@@ -11,13 +11,11 @@ namespace Graphs
     { 
         static void Main(string[] args)
         {
-            #region Unweited graph
-
-            var graph = new WeightedGraph<int>();
-            var nodes = new List<WeightedNode<int>>(10);
+            var graph = new BidirectionalGraph<int>();
+            var nodes = new List<Node<int>>(10);
 
             for (int i = 0; i < 8; ++i)
-                nodes.Add(new WeightedNode<int>(i));
+                nodes.Add(new Node<int>(i));
 
             nodes[0].Connect(nodes[1], 5);
 
@@ -38,7 +36,7 @@ namespace Graphs
             for (int i = 0; i < 8; ++i)
                 graph.AddNode(nodes[i]);
 
-            var alghorithms = new AlghoritmsWeitedGraph<int>();
+            var alghorithms = new AlghoritmsGraph<int>();
 
             var list = alghorithms.DepthFirstSearch(graph, nodes[0]);
 
@@ -46,8 +44,6 @@ namespace Graphs
             {
                 Console.WriteLine(node);
             }
-
-            #endregion
         }
     }
 }
