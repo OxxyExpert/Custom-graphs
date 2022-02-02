@@ -9,17 +9,17 @@ namespace GraphTests
 {
     public class GraphTests
     {
-        private BidirectionalGraph<int> graph;
-        private List<Node<int>> nodes;
+        private Graph<int> graph;
+        private List<BidirectionalNode<int>> nodes;
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            graph = new BidirectionalGraph<int>();
-            nodes = new List<Node<int>>(10);
+            graph = new Graph<int>();
+            nodes = new List<BidirectionalNode<int>>(10);
 
             for (int i = 0; i < 8; ++i)
-                nodes.Add(new Node<int>(i));
+                nodes.Add(new BidirectionalNode<int>(i));
 
             nodes[0].Connect(nodes[1], 5);
 
@@ -46,11 +46,11 @@ namespace GraphTests
         [Test]
         public void DijkstraAlghorithm()
         {
-            var graphDijkstra = new BidirectionalGraph<int>();
-            var nodesDijkstra = new List<Node<int>>();
+            var graphDijkstra = new Graph<int>();
+            var nodesDijkstra = new List<BidirectionalNode<int>>();
 
             for (int i = 0; i < 4; ++i)
-                nodesDijkstra.Add(new Node<int>(i));
+                nodesDijkstra.Add(new BidirectionalNode<int>(i));
 
             nodesDijkstra[0].Connect(nodesDijkstra[1], 1);
             nodesDijkstra[0].Connect(nodesDijkstra[2], 2);
@@ -74,11 +74,11 @@ namespace GraphTests
         [Test]
         public void DijkstraAlghorithm_NoPath_Null()
         {
-            var graphDijkstra = new BidirectionalGraph<int>();
-            var nodesDijkstra = new List<Node<int>>();
+            var graphDijkstra = new Graph<int>();
+            var nodesDijkstra = new List<BidirectionalNode<int>>();
 
             for (int i = 0; i < 5; ++i)
-                nodesDijkstra.Add(new Node<int>(i));
+                nodesDijkstra.Add(new BidirectionalNode<int>(i));
 
             nodesDijkstra[0].Connect(nodesDijkstra[1], 1);
             nodesDijkstra[0].Connect(nodesDijkstra[2], 2);
@@ -95,7 +95,7 @@ namespace GraphTests
 
             var actual = dijkstra.Dijkstra(graphDijkstra, nodesDijkstra[0], nodesDijkstra[4]);
 
-            IEnumerable<Node<int>> expected = null;
+            IEnumerable<BidirectionalNode<int>> expected = null;
 
             CollectionAssert.AreEqual(expected, actual);
         }
@@ -169,14 +169,14 @@ namespace GraphTests
             CollectionAssert.AreEqual(expected, actual.Select(x => x.Value).ToList());
         }
 
-        private BidirectionalGraph<int> InitializeDividedGraph()
+        private Graph<int> InitializeDividedGraph()
         {
-            var nodeZero = new Node<int>(0);
-            var nodeOne = new Node<int>(1);
-            var nodeTwo = new Node<int>(2);
-            var nodeThree = new Node<int>(3);
-            var nodeFour = new Node<int>(4);
-            var nodeFive = new Node<int>(5);
+            var nodeZero = new BidirectionalNode<int>(0);
+            var nodeOne = new BidirectionalNode<int>(1);
+            var nodeTwo = new BidirectionalNode<int>(2);
+            var nodeThree = new BidirectionalNode<int>(3);
+            var nodeFour = new BidirectionalNode<int>(4);
+            var nodeFive = new BidirectionalNode<int>(5);
 
             nodeOne.Connect(nodeTwo, 1);
 
@@ -184,7 +184,7 @@ namespace GraphTests
             nodeThree.Connect(nodeFive);
             nodeFour.Connect(nodeFive);
 
-            var graphConnected = new BidirectionalGraph<int>();
+            var graphConnected = new Graph<int>();
             graphConnected.AddNode(nodeZero);
             graphConnected.AddNode(nodeOne);
             graphConnected.AddNode(nodeTwo);

@@ -2,32 +2,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using CustomGraphs.Components;
-using CustomGraphs;
+using CustomGraphs.Components.Interfaces;
 
 namespace CustomGraphs
 {
-    public class BidirectionalGraph<T> : IEnumerable<Node<T>>, IGraph<T>
+    public class Graph<T> : IEnumerable<INode<T>>, IGraph<T>
     {
-        private List<Node<T>> _nodes;
+        private List<INode<T>> _nodes;
         public int Count
         {
             get => _nodes.Count;
         }
 
-        public BidirectionalGraph()
+        public Graph()
         {
-            _nodes = new List<Node<T>>();
+            _nodes = new List<INode<T>>();
         }
 
-        public void AddNode(Node<T> node)
+        public void AddNode(INode<T> node)
         {
             if (node == null)
                 throw new ArgumentException("Node can not be null");
 
             _nodes.Add(node);
         }
+        public void Disconnect(INode<T> node)
+        {
+            foreach (var edge in node.IncidentEdges())
+            {
+                node.Edges.Remove(edge);
+            }
 
-        public WeightedEdge<T> this[Node<T> first, Node<T> second]
+            foreach (var localNode in _nodes)
+            {
+                foreach (var edge in localNode.IncidentEdges())
+                {
+                    if(edge.To == node)
+                    {
+                        localNode.Edges.Remove(edge);
+                    }
+                }
+            }
+        }
+
+        public WeightedEdge<T> this[BidirectionalNode<T> first, BidirectionalNode<T> second]
         {
             get
             {
@@ -54,7 +72,7 @@ namespace CustomGraphs
                 }
             }
         }
-        public IEnumerable<Node<T>> GetNodes()
+        public IEnumerable<INode<T>> GetNodes()
         {
             foreach (var node in _nodes)
             {
@@ -62,7 +80,7 @@ namespace CustomGraphs
             }
         }
 
-        public IEnumerator<Node<T>> GetEnumerator()
+        public IEnumerator<INode<T>> GetEnumerator()
         {
             return _nodes.GetEnumerator();
         }

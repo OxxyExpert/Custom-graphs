@@ -5,31 +5,26 @@ using CustomGraphs.Components.Interfaces;
 
 namespace CustomGraphs.Components
 {
-    public class Node<T> : INode<T>
+    public class BidirectionalNode<T> : INode<T>
     {
-        private List<WeightedEdge<T>> _edges;
+        public List<WeightedEdge<T>> Edges { get; private set; }
+
         private readonly T _value;
 
         public T Value
         {
             get => _value;
         }
-
-        public Node(T value)
+        public BidirectionalNode(T value)
         {
-            _edges = new List<WeightedEdge<T>>();
+            Edges = new List<WeightedEdge<T>>();
             _value = value;
         }
 
-        public void Connect(Node<T> anotherNode, double weight = 0)
+        public void Connect(BidirectionalNode<T> anotherNode, double weight = 0)
         {
-            anotherNode._edges.Add(new WeightedEdge<T>(anotherNode, this, weight));
-            _edges.Add(new WeightedEdge<T>(this, anotherNode, weight));
-        }
-        public void Disconnect(WeightedEdge<T> edge)
-        {
-            edge.From._edges.Remove(edge);
-            edge.To._edges.Remove(edge);
+            anotherNode.Edges.Add(new WeightedEdge<T>(anotherNode, this, weight));
+            Edges.Add(new WeightedEdge<T>(this, anotherNode, weight));
         }
 
         public override string ToString()
@@ -37,16 +32,16 @@ namespace CustomGraphs.Components
             return _value.ToString();
         }
 
-        public IEnumerable<Node<T>> IncidentNodes()
+        public IEnumerable<INode<T>> IncidentNodes()
         {
-            foreach (var edge in _edges)
+            foreach (var edge in Edges)
             {
                 yield return edge.GetOtherNode(this);
             }
         }
         public IEnumerable<WeightedEdge<T>> IncidentEdges()
         {
-            foreach (var edge in _edges)
+            foreach (var edge in Edges)
             {
                 yield return edge;
             }

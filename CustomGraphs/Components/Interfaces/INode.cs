@@ -2,13 +2,13 @@
 
 namespace CustomGraphs.Components.Interfaces
 {
-    interface INode<T>
+    public interface INode<T>
     {
+        public List<WeightedEdge<T>> Edges { get; }
         public T Value { get; }
-        public void Connect(Node<T> anotherNode, double weight);
-        public void Disconnect(WeightedEdge<T> edge);
+        public void Connect(BidirectionalNode<T> anotherNode, double weight);
 
-        public IEnumerable<Node<T>> IncidentNodes();
+        public IEnumerable<INode<T>> IncidentNodes();
         public IEnumerable<WeightedEdge<T>> IncidentEdges();
     }
 }

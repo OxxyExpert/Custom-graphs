@@ -11,11 +11,11 @@ namespace Graphs
     { 
         static void Main(string[] args)
         {
-            var graph = new BidirectionalGraph<int>();
-            var nodes = new List<Node<int>>(10);
+            var graph = new Graph<int>();
+            var nodes = new List<BidirectionalNode<int>>(10);
 
             for (int i = 0; i < 8; ++i)
-                nodes.Add(new Node<int>(i));
+                nodes.Add(new BidirectionalNode<int>(i));
 
             nodes[0].Connect(nodes[1], 5);
 
@@ -38,7 +38,7 @@ namespace Graphs
 
             var alghorithms = new AlghoritmsGraph<int>();
 
-            var list = alghorithms.DepthFirstSearch(graph, nodes[0]);
+            var list = alghorithms.Dijkstra(graph, nodes[0], nodes[3]);
 
             foreach (var node in list)
             {

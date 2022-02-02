@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CustomGraphs.Components;
+using CustomGraphs.Components.Interfaces;
 using System.Linq;
 
 namespace CustomGraphs.Alghorithms
@@ -8,19 +9,20 @@ namespace CustomGraphs.Alghorithms
     internal class DijkstraData<T>
     {
         public double price;
-        public Node<T> previous;
+        public INode<T> previous;
     }
     public class AlghoritmsGraph<T>
     {
-        public IEnumerable<Node<T>> Dijkstra(BidirectionalGraph<T> graph, Node<T> startNode, Node<T> target)
+        public IEnumerable<INode<T>> Dijkstra(IGraph<T> graph, INode<T> startNode, INode<T> target)
         {
             var notVisited = graph.ToList();
-            var track = new Dictionary<Node<T>, DijkstraData<T>>();
+
+            var track = new Dictionary<INode<T>, DijkstraData<T>>();
             track.Add(startNode, new DijkstraData<T> { previous = null, price = 0 });
 
             while (true)
             {
-                Node<T> toOpen = null;
+                INode<T> toOpen = null;
                 double bestPrice = double.PositiveInfinity;
 
                 foreach (var node in notVisited)
@@ -41,7 +43,7 @@ namespace CustomGraphs.Alghorithms
                 {
                     double currentPrice = track[toOpen].price + edge.Weight;
 
-                    Node<T> nextNode = edge.GetOtherNode(toOpen);
+                    INode<T> nextNode = edge.GetOtherNode(toOpen);
 
                     if (track.ContainsKey(nextNode) == false || track[nextNode].price > currentPrice)
                         track[nextNode] = new DijkstraData<T> { price = currentPrice, previous = toOpen };
@@ -50,7 +52,7 @@ namespace CustomGraphs.Alghorithms
                 notVisited.Remove(toOpen);
             }
 
-            var result = new List<Node<T>>();
+            var result = new List<INode<T>>();
 
             while (target != null)
             {
@@ -61,18 +63,18 @@ namespace CustomGraphs.Alghorithms
 
             return result;
         }
-        public IEnumerable<Node<T>> FindShortestPath(BidirectionalGraph<T> graph, Node<T> startNode, Node<T> target)
+        public IEnumerable<INode<T>> FindShortestPath(IGraph<T> graph, INode<T> startNode, INode<T> target)
         {
-            var track = new Dictionary<Node<T>, Node<T>>(graph.Count);
+            var track = new Dictionary<INode<T>, INode<T>>(graph.Count);
             track.Add(startNode, null);
 
-            var queue = new Queue<Node<T>>();
+            var queue = new Queue<INode<T>>();
             queue.Enqueue(startNode);
 
 
             while (queue.Count != 0)
             {
-                Node<T> currentNode = queue.Dequeue();
+                INode<T> currentNode = queue.Dequeue();
 
                 bool endIsFound = false;
                 foreach (var nextNode in currentNode.IncidentNodes())
@@ -94,7 +96,7 @@ namespace CustomGraphs.Alghorithms
             if (track.ContainsKey(target) == false)
                 return null;
 
-            var list = new List<Node<T>>();
+            var list = new List<INode<T>>();
 
             while (target != null)
             {
@@ -105,9 +107,9 @@ namespace CustomGraphs.Alghorithms
             list.Reverse();
             return list;
         }
-        public IEnumerable<IEnumerable<Node<T>>> FindConnectedComponents(BidirectionalGraph<T> graph)
+        public IEnumerable<IEnumerable<INode<T>>> FindConnectedComponents(IGraph<T> graph)
         {
-            var visited = new HashSet<Node<T>>(graph.Count);
+            var visited = new HashSet<INode<T>>(graph.Count);
 
             while (true)
             {
@@ -126,17 +128,17 @@ namespace CustomGraphs.Alghorithms
                 yield return breadthSearch;
             }
         }
-        public IEnumerable<Node<T>> BreadFirstSearch(BidirectionalGraph<T> graph, Node<T> startNode)
+        public IEnumerable<INode<T>> BreadFirstSearch(IGraph<T> graph, INode<T> startNode)
         {
-            var queue = new Queue<Node<T>>();
+            var queue = new Queue<INode<T>>();
             queue.Enqueue(startNode);
 
-            var visited = new HashSet<Node<T>>(graph.Count);
+            var visited = new HashSet<INode<T>>(graph.Count);
             visited.Add(startNode);
 
             while (queue.Count != 0)
             {
-                Node<T> currentNode = queue.Dequeue();
+                INode<T> currentNode = queue.Dequeue();
 
                 yield return currentNode;
 
@@ -150,16 +152,16 @@ namespace CustomGraphs.Alghorithms
                 }
             }
         }
-        public IEnumerable<Node<T>> DepthFirstSearch(BidirectionalGraph<T> graph, Node<T> startNode)
+        public IEnumerable<INode<T>> DepthFirstSearch(IGraph<T> graph, INode<T> startNode)
         {
-            var stack = new Stack<Node<T>>();
+            var stack = new Stack<INode<T>>();
             stack.Push(startNode);
 
-            var visited = new HashSet<Node<T>>(graph.Count);
+            var visited = new HashSet<INode<T>>(graph.Count);
 
             while (stack.Count != 0)
             {
-                Node<T> currentNode = stack.Pop();
+                INode<T> currentNode = stack.Pop();
 
                 if (visited.Contains(currentNode) == true)
                     continue;

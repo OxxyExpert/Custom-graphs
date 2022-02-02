@@ -1,4 +1,5 @@
 ﻿using System;
+using CustomGraphs.Components.Interfaces;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,22 +7,22 @@ namespace CustomGraphs.Components
 {
     public class WeightedEdge<T> : IWeightedEdge<T>
     {
-        public Node<T> From { get; }
-        public Node<T> To { get; }
+        public INode<T> From { get; }
+        public INode<T> To { get; }
         public double Weight { get; private set; }
 
-        public WeightedEdge(Node<T> from, Node<T> to, double weight = 1)
+        public WeightedEdge(INode<T> from, INode<T> to, double weight = 1)
         {
             From = from;
             To = to;
             Weight = weight;
         }
 
-        public bool IsIncident(Node<T> node)
+        public bool IsIncident(INode<T> node)
         {
             return node == From || node == To;
         }
-        public Node<T> GetOtherNode(Node<T> currentNode)
+        public INode<T> GetOtherNode(INode<T> currentNode)
         {
             if (currentNode == From)
                 return To;
