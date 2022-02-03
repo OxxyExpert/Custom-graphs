@@ -143,6 +143,16 @@
         "runtime": {
           "lib/netcoreapp2.1/_._": {}
         }
+      },
+      "CustomGraphs/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/CustomGraphs.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CustomGraphs.dll": {}
+        }
       }
     }
   },
@@ -495,10 +505,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "CustomGraphs/1.0.0": {
+      "type": "project",
+      "path": "../CustomGraphs/CustomGraphs.csproj",
+      "msbuildProject": "../CustomGraphs/CustomGraphs.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "CustomGraphs >= 1.0.0",
       "Microsoft.CodeAnalysis.Common >= 4.0.1"
     ]
   },
@@ -528,7 +544,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\C#\\Alghorithms\\CustomGraphs\\CustomGraphs.csproj": {
+              "projectPath": "D:\\C#\\Alghorithms\\CustomGraphs\\CustomGraphs.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
