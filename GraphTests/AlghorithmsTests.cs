@@ -168,7 +168,7 @@ namespace GraphTests
 
             CollectionAssert.AreEqual(expected, actual.Select(x => x.Value).ToList());
         }
-
+        
         [Test] 
         public void RemoveVertex()
         {

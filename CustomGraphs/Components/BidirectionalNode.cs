@@ -7,7 +7,7 @@ namespace CustomGraphs.Components
 {
     public class BidirectionalNode<T> : INode<T>
     {
-        private List<WeightedEdge<T>> _edges;
+        protected List<WeightedEdge<T>> _edges;
 
         private readonly T _value;
 
