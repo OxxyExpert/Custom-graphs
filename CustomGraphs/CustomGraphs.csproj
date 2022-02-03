@@ -4,4 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Alghorithms\" />
+    <Folder Include="Components\Interfaces\" />
+    <Folder Include="Graphs\" />
+  </ItemGroup>
+
 </Project>
