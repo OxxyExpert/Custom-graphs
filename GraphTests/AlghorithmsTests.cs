@@ -12,7 +12,7 @@ namespace GraphTests
         private Graph<int> graph;
         private List<BidirectionalNode<int>> nodes;
 
-        [OneTimeSetUp]
+        [SetUp]
         public void OneTimeSetUp()
         {
             graph = new Graph<int>();
@@ -167,6 +167,46 @@ namespace GraphTests
             int[] expected = { 0, 1, 4 };
 
             CollectionAssert.AreEqual(expected, actual.Select(x => x.Value).ToList());
+        }
+
+        [Test] 
+        public void RemoveVertex()
+        {
+            graph.DisconnectNode(nodes[4]);
+
+            int[] expected = { 0, 1, 2, 3, 5, 6, 7 };
+
+            int counter = 0;
+            foreach (var node in graph)
+            {
+                Assert.AreEqual(expected[counter++], node.Value);
+            }
+        }
+        [Test]
+        public void RemoveVertex_Remove4_BFS()
+        {
+            graph.DisconnectNode(nodes[4]);
+
+            var algh = new AlghoritmsGraph<int>();
+
+            var actual = algh.BreadFirstSearch(graph, nodes[0]).Select(n => n.Value).ToArray();
+
+            int[] expected = { 0, 1, 2, 3, 6, 5, 7 };
+
+            CollectionAssert.AreEqual(expected, actual);
+        }
+        [Test]
+        public void RemoveVertex_Remove4_DFS()
+        {
+            graph.DisconnectNode(nodes[4]);
+
+            var algh = new AlghoritmsGraph<int>();
+
+            var actual = algh.DepthFirstSearch(graph, nodes[0]).Select(n => n.Value).ToArray();
+
+            int[] expected = { 0, 1, 6, 5, 7, 3, 2 };
+
+            CollectionAssert.AreEqual(expected, actual);
         }
 
         private Graph<int> InitializeDividedGraph()

@@ -10,7 +10,7 @@ namespace CustomGraphs
         public int Count { get; }
 
         public void AddNode(INode<T> node);
-        public void Disconnect(INode<T> node);
+        public void DisconnectNode(INode<T> node);
         public IEnumerable<WeightedEdge<T>> GetEdges();
         public IEnumerable<INode<T>> GetNodes();
     }

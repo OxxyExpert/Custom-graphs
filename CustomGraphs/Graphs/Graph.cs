@@ -26,40 +26,28 @@ namespace CustomGraphs
 
             _nodes.Add(node);
         }
-        public void Disconnect(INode<T> node)
+        public void DisconnectNode(INode<T> node)
         {
-            foreach (var edge in node.IncidentEdges())
+            foreach (var disconnectNode in node.IncidentNodes())
             {
-                node.Edges.Remove(edge);
+                disconnectNode.Disconnect(node);
             }
 
-            foreach (var localNode in _nodes)
-            {
-                foreach (var edge in localNode.IncidentEdges())
-                {
-                    if(edge.To == node)
-                    {
-                        localNode.Edges.Remove(edge);
-                    }
-                }
-            }
+            _nodes.Remove(node);
         }
 
-        public WeightedEdge<T> this[BidirectionalNode<T> first, BidirectionalNode<T> second]
+        public WeightedEdge<T> GetEdge(INode<T> first, INode<T> second)
         {
-            get
+            foreach (var node in _nodes)
             {
-                foreach (var node in _nodes)
+                foreach (var edge in node.IncidentEdges())
                 {
-                    foreach (var edge in node.IncidentEdges())
-                    {
-                        if (edge.From == first && edge.To == second)
-                            return edge;
-                    }
+                    if (edge.From == first && edge.To == second)
+                        return edge;
                 }
-
-                return null;
             }
+
+            return null;
         }
 
         public IEnumerable<WeightedEdge<T>> GetEdges()
