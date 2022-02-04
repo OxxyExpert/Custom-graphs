@@ -1229,11 +1229,24 @@
       "CustomGraphs/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "PriorityQueue": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/CustomGraphs.dll": {}
         },
         "runtime": {
           "bin/placeholder/CustomGraphs.dll": {}
+        }
+      },
+      "PriorityQueue/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/PriorityQueue.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PriorityQueue.dll": {}
         }
       }
     }
@@ -4622,6 +4635,11 @@
       "type": "project",
       "path": "../CustomGraphs/CustomGraphs.csproj",
       "msbuildProject": "../CustomGraphs/CustomGraphs.csproj"
+    },
+    "PriorityQueue/1.0.0": {
+      "type": "project",
+      "path": "../PriorityQueue/PriorityQueue.csproj",
+      "msbuildProject": "../PriorityQueue/PriorityQueue.csproj"
     }
   },
   "projectFileDependencyGroups": {

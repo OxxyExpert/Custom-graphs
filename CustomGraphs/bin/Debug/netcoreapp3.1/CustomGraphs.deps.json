@@ -7,14 +7,27 @@
   "targets": {
     ".NETCoreApp,Version=v3.1": {
       "CustomGraphs/1.0.0": {
+        "dependencies": {
+          "PriorityQueue": "1.0.0"
+        },
         "runtime": {
           "CustomGraphs.dll": {}
+        }
+      },
+      "PriorityQueue/1.0.0": {
+        "runtime": {
+          "PriorityQueue.dll": {}
         }
       }
     }
   },
   "libraries": {
     "CustomGraphs/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PriorityQueue/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

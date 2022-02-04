@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using CustomGraphs.Components;
 using CustomGraphs.Components.Interfaces;
 using System.Linq;
+using PriorityQueue;
 
 namespace CustomGraphs.Alghorithms
 {
@@ -13,55 +13,52 @@ namespace CustomGraphs.Alghorithms
     }
     public class AlghoritmsGraph<T>
     {
+        /// <summary>
+        /// Find the best path from start node to target into weighted graph. Complexity - O(v^2)
+        /// </summary>
+        /// <param name="graph"></param>
+        /// <param name="startNode"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
         public IEnumerable<INode<T>> Dijkstra(IGraph<T> graph, INode<T> startNode, INode<T> target)
         {
-            var notVisited = graph.ToList();
+            var visited = new List<INode<T>>();
 
-            var track = new Dictionary<INode<T>, DijkstraData<T>>();
-            track.Add(startNode, new DijkstraData<T> { previous = null, price = 0 });
+            var track = new Dictionary<INode<T>, INode<T>>();
+            track.Add(startNode, null);
+
+            var priorityQueue = new PriorityQueue<INode<T>>();
+            priorityQueue.Enqueue(startNode, 0);
 
             while (true)
             {
-                INode<T> toOpen = null;
-                double bestPrice = double.PositiveInfinity;
+                Tuple<INode<T>, double> toOpenTuple = priorityQueue.Dequeue();
 
-                foreach (var node in notVisited)
-                {
-                    if (track.ContainsKey(node) == true && track[node].price < bestPrice)
-                    {
-                        toOpen = node;
-                        bestPrice = track[node].price;
-                    }
-                }
-
-                if (toOpen == null)
+                if (toOpenTuple == null)
                     return null;
+
+                INode<T> toOpen = toOpenTuple.Item1;
+                double price = toOpenTuple.Item2;
+
+                visited.Add(toOpen);
+
                 if (toOpen == target)
                     break;
 
                 foreach (var edge in toOpen.IncidentEdges().Where(e => e.From == toOpen))
                 {
-                    double currentPrice = track[toOpen].price + edge.Weight;
-
+                    double currentPrice = price + edge.Weight;
                     INode<T> nextNode = edge.GetOtherNode(toOpen);
 
-                    if (track.ContainsKey(nextNode) == false || track[nextNode].price > currentPrice)
-                        track[nextNode] = new DijkstraData<T> { price = currentPrice, previous = toOpen };
+                    if (visited.Contains(nextNode) == true)
+                        continue;
+
+                    if (priorityQueue.UpdateOrAdd(nextNode, currentPrice) == true)
+                        track[nextNode] = toOpen;
                 }
-
-                notVisited.Remove(toOpen);
             }
 
-            var result = new List<INode<T>>();
-
-            while (target != null)
-            {
-                result.Add(target);
-                target = track[target].previous;
-            }
-            result.Reverse();
-
-            return result;
+            return BuildBethPath(track, target);
         }
         public IEnumerable<INode<T>> FindShortestPath(IGraph<T> graph, INode<T> startNode, INode<T> target)
         {
@@ -93,19 +90,7 @@ namespace CustomGraphs.Alghorithms
                     break;
             }
 
-            if (track.ContainsKey(target) == false)
-                return null;
-
-            var list = new List<INode<T>>();
-
-            while (target != null)
-            {
-                list.Add(target);
-                target = track[target];
-            }
-
-            list.Reverse();
-            return list;
+            return BuildBethPath(track, target);
         }
         public IEnumerable<IEnumerable<INode<T>>> FindConnectedComponents(IGraph<T> graph)
         {
@@ -175,6 +160,24 @@ namespace CustomGraphs.Alghorithms
                     stack.Push(nextNode);
                 }
             }
+        }
+
+        private List<INode<T>> BuildBethPath(Dictionary<INode<T>, INode<T>> track, INode<T> target)
+        {
+            if (track.ContainsKey(target) == false)
+                return null;
+
+            var list = new List<INode<T>>();
+
+            while (target != null)
+            {
+                list.Add(target);
+                target = track[target];
+            }
+
+            list.Reverse();
+
+            return list;
         }
     }
 }

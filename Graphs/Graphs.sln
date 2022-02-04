@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomGraphs", "..\CustomGr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphTests", "..\GraphTests\GraphTests.csproj", "{B582762F-0645-4886-9AF1-50F6F392A630}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriorityQueue", "..\PriorityQueue\PriorityQueue.csproj", "{D672F627-4F28-46DA-A796-1DE8E920B6F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B582762F-0645-4886-9AF1-50F6F392A630}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B582762F-0645-4886-9AF1-50F6F392A630}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B582762F-0645-4886-9AF1-50F6F392A630}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D672F627-4F28-46DA-A796-1DE8E920B6F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D672F627-4F28-46DA-A796-1DE8E920B6F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D672F627-4F28-46DA-A796-1DE8E920B6F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D672F627-4F28-46DA-A796-1DE8E920B6F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

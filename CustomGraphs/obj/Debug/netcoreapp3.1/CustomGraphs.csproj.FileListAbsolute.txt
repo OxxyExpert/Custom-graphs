@@ -7,3 +7,6 @@ D:\C#\Alghorithms\CustomGraphs\obj\Debug\netcoreapp3.1\CustomGraphs.AssemblyInfo
 D:\C#\Alghorithms\CustomGraphs\obj\Debug\netcoreapp3.1\CustomGraphs.csproj.CoreCompileInputs.cache
 D:\C#\Alghorithms\CustomGraphs\obj\Debug\netcoreapp3.1\CustomGraphs.dll
 D:\C#\Alghorithms\CustomGraphs\obj\Debug\netcoreapp3.1\CustomGraphs.pdb
+D:\C#\Alghorithms\CustomGraphs\bin\Debug\netcoreapp3.1\PriorityQueue.dll
+D:\C#\Alghorithms\CustomGraphs\bin\Debug\netcoreapp3.1\PriorityQueue.pdb
+D:\C#\Alghorithms\CustomGraphs\obj\Debug\netcoreapp3.1\CustomGraphs.csproj.CopyComplete

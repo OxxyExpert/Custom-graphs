@@ -1,0 +1,9 @@
+D:\C#\Alghorithms\PriorityQueue\bin\Debug\netcoreapp3.1\PriorityQueue.deps.json
+D:\C#\Alghorithms\PriorityQueue\bin\Debug\netcoreapp3.1\PriorityQueue.dll
+D:\C#\Alghorithms\PriorityQueue\bin\Debug\netcoreapp3.1\PriorityQueue.pdb
+D:\C#\Alghorithms\PriorityQueue\obj\Debug\netcoreapp3.1\PriorityQueue.csprojAssemblyReference.cache
+D:\C#\Alghorithms\PriorityQueue\obj\Debug\netcoreapp3.1\PriorityQueue.AssemblyInfoInputs.cache
+D:\C#\Alghorithms\PriorityQueue\obj\Debug\netcoreapp3.1\PriorityQueue.AssemblyInfo.cs
+D:\C#\Alghorithms\PriorityQueue\obj\Debug\netcoreapp3.1\PriorityQueue.csproj.CoreCompileInputs.cache
+D:\C#\Alghorithms\PriorityQueue\obj\Debug\netcoreapp3.1\PriorityQueue.dll
+D:\C#\Alghorithms\PriorityQueue\obj\Debug\netcoreapp3.1\PriorityQueue.pdb

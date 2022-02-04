@@ -10,4 +10,8 @@
     <Folder Include="Graphs\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PriorityQueue\PriorityQueue.csproj" />
+  </ItemGroup>
+
 </Project>
