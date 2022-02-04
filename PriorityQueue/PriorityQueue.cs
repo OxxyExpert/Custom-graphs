@@ -4,6 +4,10 @@ using System.Linq;
 
 namespace PriorityQueue
 {
+    /// <summary>
+    /// Data structure for dijkstra alghorithm
+    /// </summary>
+    /// <typeparam name="TKey"></typeparam>
     public class PriorityQueue<TKey> : IPriorityQueue<TKey>
     {
         private Dictionary<TKey, double> _dictionary;
@@ -15,36 +19,24 @@ namespace PriorityQueue
 
         public Tuple<TKey, double> Dequeue()
         {
-            #region Old One
-            //if (_dictionary.Count == 0)
-            //    throw new InvalidOperationException("Queue is clear. Can't return a value");
-
-            //double minPriority = double.MaxValue;
-            //TKey element = _dictionary.First().Key;
-
-            //foreach (var pair in _dictionary)
-            //{
-            //    if (pair.Value < minPriority)
-            //    {
-            //        element = pair.Key;
-
-            //        minPriority = pair.Value;
-            //    }
-            //}
-
-            //_dictionary.Remove(element);
-            //return Tuple.Create<TKey, double>(element, minPriority);
-            #endregion
-
             if (_dictionary.Count == 0)
                 return null;
 
-            var min = _dictionary.Min(z => z.Value);
-            var key = _dictionary.FirstOrDefault(z => z.Value == min).Key;
+            double minPriority = double.MaxValue;
+            TKey element = _dictionary.First().Key;
 
-            _dictionary.Remove(key);
+            foreach (var pair in _dictionary)
+            {
+                if (pair.Value < minPriority)
+                {
+                    element = pair.Key;
 
-            return Tuple.Create(key, min);
+                    minPriority = pair.Value;
+                }
+            }
+
+            _dictionary.Remove(element);
+            return Tuple.Create<TKey, double>(element, minPriority);
         }
 
         public void Enqueue(TKey key, double priority)

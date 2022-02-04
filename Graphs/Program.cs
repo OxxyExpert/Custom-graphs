@@ -26,6 +26,7 @@ namespace Graphs
 
             nodes[3].Connect(nodes[2], 6);
             nodes[5].Connect(nodes[3], 6);
+            nodes[5].Connect(nodes[7], 6);
 
             nodes[2].Connect(nodes[4], 2);
             nodes[4].Connect(nodes[1], 3);

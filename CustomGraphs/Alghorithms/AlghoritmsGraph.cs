@@ -60,6 +60,13 @@ namespace CustomGraphs.Alghorithms
 
             return BuildBethPath(track, target);
         }
+        /// <summary>
+        /// Find shortest path by the least number of nodes 
+        /// </summary>
+        /// <param name="graph"></param>
+        /// <param name="startNode"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
         public IEnumerable<INode<T>> FindShortestPath(IGraph<T> graph, INode<T> startNode, INode<T> target)
         {
             var track = new Dictionary<INode<T>, INode<T>>(graph.Count);
@@ -92,6 +99,11 @@ namespace CustomGraphs.Alghorithms
 
             return BuildBethPath(track, target);
         }
+        /// <summary>
+        /// Find divided parths of nodes in graph
+        /// </summary>
+        /// <param name="graph"></param>
+        /// <returns></returns>
         public IEnumerable<IEnumerable<INode<T>>> FindConnectedComponents(IGraph<T> graph)
         {
             var visited = new HashSet<INode<T>>(graph.Count);
@@ -113,6 +125,12 @@ namespace CustomGraphs.Alghorithms
                 yield return breadthSearch;
             }
         }
+        /// <summary>
+        /// Standard walk in width 
+        /// </summary>
+        /// <param name="graph"></param>
+        /// <param name="startNode"></param>
+        /// <returns></returns>
         public IEnumerable<INode<T>> BreadFirstSearch(IGraph<T> graph, INode<T> startNode)
         {
             var queue = new Queue<INode<T>>();
@@ -137,6 +155,12 @@ namespace CustomGraphs.Alghorithms
                 }
             }
         }
+        /// <summary>
+        /// Standard walk in depth
+        /// </summary>
+        /// <param name="graph"></param>
+        /// <param name="startNode"></param>
+        /// <returns></returns>
         public IEnumerable<INode<T>> DepthFirstSearch(IGraph<T> graph, INode<T> startNode)
         {
             var stack = new Stack<INode<T>>();

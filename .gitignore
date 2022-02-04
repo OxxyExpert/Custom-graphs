@@ -1,5 +1,3 @@
-*.cache
 *.suo
+*.cache
 *.testlog
-*.v2
-Build/
